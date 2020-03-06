@@ -1,0 +1,7 @@
+{
+  "name": "paper_ionicV4",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

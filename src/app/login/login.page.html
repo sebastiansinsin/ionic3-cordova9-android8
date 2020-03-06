@@ -1,0 +1,86 @@
+<ion-header class="header-back-white">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="login-content">
+    <ion-row>
+        <form [formGroup]="loginForm" class="remove_padding_form" style="padding: 0 15px;">
+            <ion-col size="12">
+                <div class="login-paper-logo">
+                    <img src="./../../assets/img/logo_login_paper.svg">
+                </div>
+            </ion-col>
+            <ion-col size="12">
+                <div class="welcome_form_login">
+                    <h1>Masuk ke Paper.id</h1>
+                    <h6>Silahkan masuk dengan akun yang terdaftar di Paper.id/Payper</h6>
+                </div>
+            </ion-col>
+            <ion-col size="12">
+                <ion-item class="input-form-item login-form-item">
+                    <ion-input autocomplete="new-password" class="input-form-login input-email-form-login" type="email"
+                        formControlName="email" [style.--color]="'green'" placeholder="cth. priska@paper.id" required
+                        [ngClass]="{ 'error-border-red': (!loginForm.controls.email.valid && (loginForm.controls.email.touched || submitAttempt)) }">
+                    </ion-input>
+                </ion-item>
+                <ion-item *ngIf="type_input != '' || !loginForm.controls.email.valid"
+                    class="--padding-side-without-card form-message login-ion-item">
+                    <div class="instruction-login"
+                        [ngClass]="{ 'error-red': (!loginForm.controls.email.valid && (loginForm.controls.email.touched || submitAttempt)) }">
+                        Masukkan Email Anda
+                    </div>
+                </ion-item>
+                <ion-item *ngIf="type_input == '' && loginForm.controls.email.valid"
+                    class="--padding-side-without-card form-message login-ion-item">
+                    <div [ngClass]="{ 'error-red': true }">
+                        Mohon Cek Kembali Email Anda
+                    </div>
+                </ion-item>
+                <ion-item class="input-form-item login-form-item">
+                    <ion-input autocomplete="new-password" class="input-form-login input-password-form-login"
+                        [type]="password_type" formControlName="password" [style.--color]="'green'"
+                        placeholder="Kata Sandi" required [ngClass]="{ 'error-border-red': (!loginForm.controls.password.valid && (loginForm.controls.password.touched || submitAttempt)) || 
+                            (type_input == '' && !loginForm.controls.password.valid) }"></ion-input>
+                    <div class="eye mask-login" item-right (click)="unmask()" *ngIf="mask_value"></div>
+                    <div class="eye unmask-login" item-right (click)="mask()" *ngIf="!mask_value"></div>
+                </ion-item>
+                <ion-item class="--padding-side-without-card form-message login-ion-item">
+                    <div class="instruction-login"
+                        [ngClass]="{ 'error-red': (!loginForm.controls.password.valid && (loginForm.controls.password.touched || submitAttempt)) }">
+                        Masukkan Kata Sandi Anda
+                    </div>
+                </ion-item>
+            </ion-col>
+            <div class="forgot-password-container">
+                <div class="forgot-password" [routerLink]="['/forgot-password']">
+                    Lupa kata sandi?
+                </div>
+            </div>
+
+            <ion-col size="12">
+                <div ion-text class="text-center">
+                    <button ion-button color="paper_blue" (click)="login(loginForm)"
+                        class="button-create button-create-form button-login">
+                        Masuk
+                    </button>
+                </div>
+            </ion-col>
+        </form>
+    </ion-row>
+    <ion-row>
+        <ion-col size="12" class="footer_login">
+            <div class="welcome_button">
+                <div style="color: white; opacity: 0.5">
+                    Belum memiliki akun PayPer / Paper.id?
+                </div>
+                <div color="paper_blue" [routerLink]="['/register']" class="text-login">
+                    Daftar Sekarang
+                </div>
+            </div>
+        </ion-col>
+    </ion-row>
+</ion-content>
