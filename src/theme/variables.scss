@@ -1,262 +1,71 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
+// Font path is used to include ionicons,
+// roboto, and noto sans fonts
+$font-path: "../assets/fonts";
+// The app direction is used to include
+// rtl styles in your app. For more info, please see:
+// http://ionicframework.com/docs/theming/rtl-support/
+$app-direction: ltr;
+@import "ionic.globals";
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/theming/overriding-ionic-variables/
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+$font-family-md-base: "Lato";
+$font-family-ios-base: "Lato";
+$font-family-wp-base: "Lato";
+$spinner-md-dots-color: #fff;
+$spinner-ios-dots-color: #fff;
+$colors: (
+  primary: #488aff,
+  secondary: #32db64,
+  danger: #f53d3d,
+  gray_paper: #d0d2d6,
+  dark: #222,
+  white: #fff,
+  blue_paper: #3d99d4,
+  green_paper: #add582,
+  text_paper: #3d5567,
+  bg_paper: #f4fbfd,
+  red_paper: #e35061,
+  side_paper: #398bc6,
+  text_disable_paper: #c6d6e0,
+  text_footer_paper: #e6f5fd,
+  dark_grey: #868d91
+);
 
-/** Ionic CSS Variables **/
-:root {
-  /** primary **/
-  --ion-color-primary: #488aff;
-  --ion-color-primary-rgb: 56, 128, 255;
-  --ion-color-primary-contrast: #ffffff;
-  --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #3171e0;
-  --ion-color-primary-tint: #4c8dff;
-
-  /** secondary **/
-  --ion-color-secondary: #32db64;
-  --ion-color-secondary-rgb: 12, 209, 232;
-  --ion-color-secondary-contrast: #ffffff;
-  --ion-color-secondary-contrast-rgb: 255, 255, 255;
-  --ion-color-secondary-shade: #0bb8cc;
-  --ion-color-secondary-tint: #24d6ea;
-
-  /** tertiary **/
-  --ion-color-tertiary: #7044ff;
-  --ion-color-tertiary-rgb: 112, 68, 255;
-  --ion-color-tertiary-contrast: #ffffff;
-  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
-  --ion-color-tertiary-shade: #633ce0;
-  --ion-color-tertiary-tint: #7e57ff;
-
-  /** success **/
-  --ion-color-success: #10dc60;
-  --ion-color-success-rgb: 16, 220, 96;
-  --ion-color-success-contrast: #ffffff;
-  --ion-color-success-contrast-rgb: 255, 255, 255;
-  --ion-color-success-shade: #0ec254;
-  --ion-color-success-tint: #28e070;
-
-  /** warning **/
-  --ion-color-warning: #ffce00;
-  --ion-color-warning-rgb: 255, 206, 0;
-  --ion-color-warning-contrast: #ffffff;
-  --ion-color-warning-contrast-rgb: 255, 255, 255;
-  --ion-color-warning-shade: #e0b500;
-  --ion-color-warning-tint: #ffd31a;
-
-  /** danger **/
-  --ion-color-danger: #f53d3d;
-  --ion-color-danger-rgb: 245, 61, 61;
-  --ion-color-danger-contrast: #ffffff;
-  --ion-color-danger-contrast-rgb: 255, 255, 255;
-  --ion-color-danger-shade: #d33939;
-  --ion-color-danger-tint: #f25454;
-
-  /** dark **/
-  --ion-color-dark: #222428;
-  --ion-color-dark-rgb: 34, 34, 34;
-  --ion-color-dark-contrast: #ffffff;
-  --ion-color-dark-contrast-rgb: 255, 255, 255;
-  --ion-color-dark-shade: #1e2023;
-  --ion-color-dark-tint: #383a3e;
-
-  /** medium **/
-  --ion-color-medium: #989aa2;
-  --ion-color-medium-rgb: 152, 154, 162;
-  --ion-color-medium-contrast: #ffffff;
-  --ion-color-medium-contrast-rgb: 255, 255, 255;
-  --ion-color-medium-shade: #86888f;
-  --ion-color-medium-tint: #a2a4ab;
-
-  /** light **/
-  --ion-color-light: #f4f5f8;
-  --ion-color-light-rgb: 244, 244, 244;
-  --ion-color-light-contrast: #000000;
-  --ion-color-light-contrast-rgb: 0, 0, 0;
-  --ion-color-light-shade: #d7d8da;
-  --ion-color-light-tint: #f5f6f9;
-
-  /** color variable paper **/
-  /** Blue Paper **/
-  --ion-color-blue_paper: #3d99d4;
-  --ion-color-blue_paper-rgb: 61, 153, 212;
-  --ion-color-blue_paper-contrast: #000000;
-  --ion-color-blue_paper-contrast-rgb: 0, 0, 0;
-  --ion-color-blue_paper-shade: #3687bb;
-  --ion-color-blue_paper-tint: #50a3d8;
-
-  /** green paper **/
-  --ion-color-green_paper: #add582;
-  --ion-color-green_paper-rgb: 173, 213, 130;
-  --ion-color-green_paper-contrast: #000000;
-  --ion-color-green_paper-contrast-rgb: 0, 0, 0;
-  --ion-color-green_paper-shade: #98bb72;
-  --ion-color-green_paper-tint: #b5d98f;
-
-  /** text paper **/
-  --ion-color-text_paper: #3d5567;
-  --ion-color-text_paper-rgb: 61, 85, 103;
-  --ion-color-text_paper-contrast: #ffffff;
-  --ion-color-text_paper-contrast-rgb: 255, 255, 255;
-  --ion-color-text_paper-shade: #364b5b;
-  --ion-color-text_paper-tint: #506676;
-
-  /** bg paper **/
-  --ion-color-bg_paper: #f4fbfd;
-  --ion-color-bg_paper-rgb: 244, 251, 253;
-  --ion-color-bg_paper-contrast: #000000;
-  --ion-color-bg_paper-contrast-rgb: 0, 0, 0;
-  --ion-color-bg_paper-shade: #d7dddf;
-  --ion-color-bg_paper-tint: #f5fbfd;
-
-  /** red_paper **/
-  --ion-color-red_paper: #e35061;
-  --ion-color-red_paper-rgb: 227, 80, 97;
-  --ion-color-red_paper-contrast: #ffffff;
-  --ion-color-red_paper-contrast-rgb: 255, 255, 255;
-  --ion-color-red_paper-shade: #c84655;
-  --ion-color-red_paper-tint: #e66271;
-
-  /** side paper **/
-  --ion-color-side_paper: #398bc6;
-  --ion-color-side_paper-rgb: 57, 139, 198;
-  --ion-color-side_paper-contrast: #ffffff;
-  --ion-color-side_paper-contrast-rgb: 255, 255, 255;
-  --ion-color-side_paper-shade: #327aae;
-  --ion-color-side_paper-tint: #4d97cc;
-
-  /** text disable paper **/
-  --ion-color-text_disable_paper: #c6d6e0;
-  --ion-color-text_disable_paper-rgb: 198, 214, 224;
-  --ion-color-text_disable_paper-contrast: #000000;
-  --ion-color-text_disable_paper-contrast-rgb: 0, 0, 0;
-  --ion-color-text_disable_paper-shade: #aebcc5;
-  --ion-color-text_disable_paper-tint: #ccdae3;
-
-  --ion-color-text_footer_paper: #e6f5fd;
-  --ion-color-text_footer_paper-rgb: 230, 245, 253;
-  --ion-color-text_footer_paper-contrast: #000000;
-  --ion-color-text_footer_paper-contrast-rgb: 0, 0, 0;
-  --ion-color-text_footer_paper-shade: #cad8df;
-  --ion-color-text_footer_paper-tint: #e9f6fd;
-
-  --ion-color-dark_grey: #868d91;
-  --ion-color-dark_grey-rgb: 134, 141, 145;
-  --ion-color-dark_grey-contrast: #000000;
-  --ion-color-dark_grey-contrast-rgb: 0, 0, 0;
-  --ion-color-dark_grey-shade: #767c80;
-  --ion-color-dark_grey-tint: #92989c;
-
-  --ion-color-gray_paper: #d0d2d6;
-  --ion-color-gray_paper-rgb: 208, 210, 214;
-  --ion-color-gray_paper-contrast: #000000;
-  --ion-color-gray_paper-contrast-rgb: 0, 0, 0;
-  --ion-color-gray_paper-shade: #b7b9bc;
-  --ion-color-gray_paper-tint: #d5d7da;
-
-  --ion-color-white: #ffffff;
-  --ion-color-white-rgb: 255, 255, 255;
-  --ion-color-white-contrast: #000000;
-  --ion-color-white-contrast-rgb: 0, 0, 0;
-  --ion-color-white-shade: #e0e0e0;
-  --ion-color-white-tint: #ffffff;
-}
-
-/** color class paper**/
-.ion-color-blue_paper {
-  --ion-color-base: var(--ion-color-blue_paper);
-  --ion-color-base-rgb: var(--ion-color-blue_paper-rgb);
-  --ion-color-contrast: var(--ion-color-blue_paper-contrast);
-  --ion-color-contrast-rgb: var(--ion-color-blue_paper-contrast-rgb);
-  --ion-color-shade: var(--ion-color-blue_paper-shade);
-  --ion-color-tint: var(--ion-color-blue_paper-tint);
-}
-
-.ion-color-green_paper {
-  --ion-color-base: var(--ion-color-green_paper);
-  --ion-color-base-rgb: var(--ion-color-green_paper-rgb);
-  --ion-color-contrast: var(--ion-color-green_paper-contrast);
-  --ion-color-contrast-rgb: var(--ion-color-green_paper-contrast-rgb);
-  --ion-color-shade: var(--ion-color-green_paper-shade);
-  --ion-color-tint: var(--ion-color-green_paper-tint);
-}
-
-.ion-color-text_paper {
-  --ion-color-base: var(--ion-color-text_paper);
-  --ion-color-base-rgb: var(--ion-color-text_paper-rgb);
-  --ion-color-contrast: var(--ion-color-text_paper-contrast);
-  --ion-color-contrast-rgb: var(--ion-color-text_paper-contrast-rgb);
-  --ion-color-shade: var(--ion-color-text_paper-shade);
-  --ion-color-tint: var(--ion-color-text_paper-tint);
-}
-
-.ion-color-bg_paper {
-  --ion-color-base: var(--ion-color-bg_paper);
-  --ion-color-base-rgb: var(--ion-color-bg_paper-rgb);
-  --ion-color-contrast: var(--ion-color-bg_paper-contrast);
-  --ion-color-contrast-rgb: var(--ion-color-bg_paper-contrast-rgb);
-  --ion-color-shade: var(--ion-color-bg_paper-shade);
-  --ion-color-tint: var(--ion-color-bg_paper-tint);
-}
-
-.ion-color-red_paper {
-  --ion-color-base: var(--ion-color-red_paper);
-  --ion-color-base-rgb: var(--ion-color-red_paper-rgb);
-  --ion-color-contrast: var(--ion-color-red_paper-contrast);
-  --ion-color-contrast-rgb: var(--ion-color-red_paper-contrast-rgb);
-  --ion-color-shade: var(--ion-color-red_paper-shade);
-  --ion-color-tint: var(--ion-color-red_paper-tint);
-}
-
-.ion-color-side_paper {
-  --ion-color-base: var(--ion-color-side_paper);
-  --ion-color-base-rgb: var(--ion-color-side_paper-rgb);
-  --ion-color-contrast: var(--ion-color-side_paper-contrast);
-  --ion-color-contrast-rgb: var(--ion-color-side_paper-contrast-rgb);
-  --ion-color-shade: var(--ion-color-side_paper-shade);
-  --ion-color-tint: var(--ion-color-side_paper-tint);
-}
-
-.ion-color-text_disable_paper {
-  --ion-color-base: var(--ion-color-text_disable_paper);
-  --ion-color-base-rgb: var(--ion-color-text_disable_paper-rgb);
-  --ion-color-contrast: var(--ion-color-text_disable_paper-contrast);
-  --ion-color-contrast-rgb: var(--ion-color-text_disable_paper-contrast-rgb);
-  --ion-color-shade: var(--ion-color-text_disable_paper-shade);
-  --ion-color-tint: var(--ion-color-text_disable_paper-tint);
-}
-
-.ion-color-text_footer_paper {
-  --ion-color-base: var(--ion-color-text_footer_paper);
-  --ion-color-base-rgb: var(--ion-color-text_footer_paper-rgb);
-  --ion-color-contrast: var(--ion-color-text_footer_paper-contrast);
-  --ion-color-contrast-rgb: var(--ion-color-text_footer_paper-contrast-rgb);
-  --ion-color-shade: var(--ion-color-text_footer_paper-shade);
-  --ion-color-tint: var(--ion-color-text_footer_paper-tint);
-}
-
-.ion-color-dark_grey {
-  --ion-color-base: var(--ion-color-dark_grey);
-  --ion-color-base-rgb: var(--ion-color-dark_grey-rgb);
-  --ion-color-contrast: var(--ion-color-dark_grey-contrast);
-  --ion-color-contrast-rgb: var(--ion-color-dark_grey-contrast-rgb);
-  --ion-color-shade: var(--ion-color-dark_grey-shade);
-  --ion-color-tint: var(--ion-color-dark_grey-tint);
-}
-
-.ion-color-gray_paper {
-  --ion-color-base: var(--ion-color-gray_paper);
-  --ion-color-base-rgb: var(--ion-color-gray_paper-rgb);
-  --ion-color-contrast: var(--ion-color-gray_paper-contrast);
-  --ion-color-contrast-rgb: var(--ion-color-gray_paper-contrast-rgb);
-  --ion-color-shade: var(--ion-color-gray_paper-shade);
-  --ion-color-tint: var(--ion-color-gray_paper-tint);
-}
-
-.ion-color-white {
-  --ion-color-base: var(--ion-color-white);
-  --ion-color-base-rgb: var(--ion-color-white-rgb);
-  --ion-color-contrast: var(--ion-color-white-contrast);
-  --ion-color-contrast-rgb: var(--ion-color-white-contrast-rgb);
-  --ion-color-shade: var(--ion-color-white-shade);
-  --ion-color-tint: var(--ion-color-white-tint);
-}
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+@import "ionic.theme.default";
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/ionicons/
+@import "ionic.ionicons";
+// Fonts
+// --------------------------------------------------
+@import "roboto";
+@import "noto-sans";

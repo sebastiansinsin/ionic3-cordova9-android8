@@ -1,0 +1,103 @@
+* ::-webkit-scrollbar {
+  display: none;
+  /* Safari 4.0 - 8.0 */
+  @-webkit-keyframes search-hide {
+    0%,
+    50% {
+      display: none;
+    }
+  }
+  @keyframes search-hide {
+    0%,
+    50% {
+      display: none;
+    }
+  }
+  /* Safari 4.0 - 8.0 */
+  @-webkit-keyframes search-show {
+    0%,
+    50% {
+      display: none;
+      opacity: 0;
+    }
+    100% {
+      display: block;
+      opacity: 1;
+    }
+  }
+  @keyframes search-show {
+    0%,
+    50% {
+      display: none;
+      opacity: 0;
+    }
+    100% {
+      display: block;
+      opacity: 1;
+    }
+  }
+
+  /* Safari 4.0 - 8.0 */
+  @-webkit-keyframes head-hide {
+    0% {
+      height: auto;
+    }
+    100% {
+      height: 56px;
+    }
+  }
+  @keyframes head-hide {
+    0% {
+      height: auto;
+    }
+    100% {
+      height: 56px;
+    }
+  }
+  /* Safari 4.0 - 8.0 */
+  @-webkit-keyframes head-show {
+    100% {
+      height: auto;
+    }
+  }
+  @keyframes head-show {
+    100% {
+      height: auto;
+    }
+  }
+  .--chevron-back-button .back-button .ion-md-arrow-back:before {
+    content: "\f3cf";
+  }
+
+  .--chevron-back-button-white .back-button .ion-md-arrow-back:before {
+    content: "\f3cf";
+    color: #fff;
+  }
+  .--chevron-back-button-blue .back-button .ion-md-arrow-back:before {
+    content: "\f3cf";
+    color: color($colors, blue_paper);
+  }
+
+  .--chevron-close-button-blue .back-button .ion-md-arrow-back:before {
+    content: "\f2c0" !important;
+    color: color($colors, blue_paper);
+  }
+  /* Fade in tabs */
+  @-webkit-keyframes fadeEffect {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeEffect {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
