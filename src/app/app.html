@@ -1,2 +1,110 @@
+<ng-progress [positionUsing]="'marginLeft'" [color]="'#b2ed7f'" [minimum]="0.15" [maximum]="1"
+    [direction]="'leftToRightIncreased'" [ease]="'linear'"></ng-progress>
+<ion-menu [content]="content" persistent="true" id="disabled" (ionOpen)="menuOpened()" (ionClose)="menuClosed()"
+    class="paper-menu" [swipeEnabled]="false">
+    <ion-content class="--menu-content">
+        <div class="logo-left">
+            <span>
+                <img src="assets/img/paperlogowhite.svg" alt="logo" class="--logo-lg">
+            </span>
+            <span class="">
+                <img src="assets/img/gradient-header.svg" alt="logo" class="--gradient-header">
+            </span>
+
+        </div>
+        <ion-list class="list-menu" style="margin-top: 20px">
+            <ion-item class="--menu-item-label" (click)="goToProfile()" menuClose>
+                <div style="display: flex; align-items:flex-start;">
+                    <img src="assets/icon/login/login-icon-contact-white.svg" class="icon-item_paper"
+                        style="width:20px; padding:0; margin-right:10px;">
+                    <div style="display: flex; flex-direction: column;">
+                        <div style="display: flex; align-items: center; margin-bottom: 2px;">
+                            <div class="profile-name">{{profile.name}}</div>
+                            <!-- <div class="profile-package">{{profile.package}}</div> -->
+                        </div>
+                        <div class="profile-role">Pengguna ({{profile.role}})</div>
+                        <div class="profile-email">{{profile.email}}</div>
+                    </div>
+                </div>
+                <div class="" padding *ngIf="referral_code != ''">
+                    <ion-row>
+                        <ion-col col-8>
+                            <button (click)='copy()' class="paper-button paper-button-green" ion-button>
+                                <ion-icon slot="start" name="copy" style="margin-right:5px"></ion-icon>
+                                {{ referral_code }}
+                            </button>
+                        </ion-col>
+                    </ion-row>
+                </div>
+            </ion-item>
+        </ion-list>
+
+        <ion-list class="--list-menu">
+
+            <div *ngFor="let p of pages">
+                <div
+                    [hidden]="(['Pengaturan'].indexOf(p.title) >= 0 && isAdmin || ['Laporan','Pengaturan','Purchase Order','Keuangan','Biaya', 'Stok'].indexOf(p.title) >= 0 && isMarketing)">
+                    <button *ngIf="p.nav" menuClose ion-item (click)="openPage(p); clearToggle(p); setActive(p)"
+                        class="--menu-item-label">
+                        <h2 style="display:inline-block;"
+                            [ngClass]="{'--paper-color-green':p.active, '--paper-color-white':!p.active}">
+                            <img src="{{p.icon}}" class="--paper-icon-item">
+                            {{p.title}}
+                        </h2>
+                    </button>
+                    <button *ngIf="!p.nav" ion-item (click)="p.toggle = !p.toggle; clearToggle(p)"
+                        class="--menu-item-label">
+                        <h2 style="display:inline-block;font-family:'lato'"
+                            [ngClass]="{'--paper-color-green':p.toggle, '--paper-color-white':!p.toggle}">
+                            <img src="{{p.icon}}" class="--paper-icon-item">
+                            {{p.title}} <ion-badge item-end
+                                style="background-color: whitesmoke; color: #398bc6; font-size: 1rem;" *ngIf="p.new">
+                                new!</ion-badge>
+                        </h2>
+                        <ion-icon [hidden]="p.toggle" item-right name="ios-arrow-forward"
+                            style="font-size:16px;margin-top: 18px;"
+                            [ngClass]="{'--paper-color-green':p.toggle, '--paper-color-white':!p.toggle}"></ion-icon>
+                        <ion-icon [hidden]="!p.toggle" item-right name="ios-arrow-down"
+                            style="font-size:16px;margin-top: 18px;"
+                            [ngClass]="{'--paper-color-green':p.toggle, '--paper-color-white':!p.toggle}"></ion-icon>
+                    </button>
+                    <div *ngIf="p.toggle">
+                        <div *ngFor="let child of p.childs">
+                            <div
+                                [hidden]="(['Kirim Pembayaran','Invoice Pembelian','Purchase Order', 'Lokasi List'].indexOf(child.title) >= 0 && isMarketing)">
+                                <button menuClose ion-item (click)="openPage(child); setActive(child);"
+                                    class="--menu-item-label --paper-side-blue">
+                                    <h2 style="padding-left:30px;display:flex;"
+                                        [ngClass]="{'--paper-color-green':child.active, '--paper-color-white':!child.active}">
+                                        {{child.title}} <ion-badge item-end
+                                            style="background-color: whitesmoke; color: #398bc6; font-size: 1rem;margin: 0px 0px 0px 5px;"
+                                            *ngIf="child.beta">beta</ion-badge>
+                                    </h2>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button menuClose ion-item (click)="feedBackOpen()" class="--menu-item-label">
+                <h2>
+                    <img src="assets/img/side-menu/support.svg" class="--paper-icon-item">
+                    Support Center
+                </h2>
+
+            </button>
+            <button menuClose ion-item (click)="logout()" class="--menu-item-label">
+                <h2>
+                    <img src="assets/img/side-menu/logout.svg" class="--paper-icon-item">
+                    Log out
+                </h2>
+
+            </button>
+        </ion-list>
+
+    </ion-content>
+
+</ion-menu>
+
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

@@ -1,5 +1,5 @@
-import { FirebaseAnalytics } from '@ionic-native/firebase-analytics';
-export declare class FirebaseAnalyticsMocks extends FirebaseAnalytics {
+import { FirebaseAnalytics, FirebaseAnalyticsOriginal } from '@ionic-native/firebase-analytics';
+export declare class FirebaseAnalyticsMocks extends FirebaseAnalyticsOriginal {
     /**
      * Logs an app event.
      * Be aware of automatically collected events.

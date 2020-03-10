@@ -20,38 +20,29 @@ import { ImagePicker } from "@ionic-native/image-picker";
 //other
 import { MyApp } from "./app.component";
 import { WelcomeComponent } from "../pages/welcome/welcome.component";
-import { FirebaseAnalytics } from "@ionic-native/firebase-analytics";
-import { AppVersion } from "@ionic-native/app-version";
+import { ChartsModule } from "ng2-charts";
+import { zendeskService } from "../services/zendesk.service";
 import { NgProgressModule } from "ng2-progressbar"
-import { SocketIoModule, SocketIoConfig } from "ng-socket-io";
-import { ENV } from '../environments/environment';
 import { CoreModule } from './../pages/core.module';
+import { GetApiValidatorService } from "../services/get-api-validator.service";
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { Clipboard } from '@ionic-native/clipboard';
 import { Device } from '@ionic-native/device';
-import * as Sentry from 'sentry-cordova';
-
-const config: SocketIoConfig = {
-    url: ENV.gateway_url,
-    options: {
-        // transports: ["websocket", "polling", "long-polling"],
-        // rejectUnauthorized: false
-    }
-};
+import { SettingEmailService } from "../providers/email-settings.service";
+import { AppVersion } from "@ionic-native/app-version";
 
 @NgModule({
     declarations: [
         MyApp,
-        WelcomeComponent,
     ],
     imports: [
         // HttpClientModule,
         BrowserModule,
         CommonModule,
         BrowserAnimationsModule,
+        ChartsModule,
         NgProgressModule,
-        SocketIoModule.forRoot(config),
-
+        // NgxChartsModule,
         IonicModule.forRoot(MyApp, {
             backButtonText: "",
             iconMode: "ios",
@@ -68,13 +59,15 @@ const config: SocketIoConfig = {
     ],
     bootstrap: [IonicApp],
     entryComponents: [
-        MyApp,
-        WelcomeComponent,
+        //app
+        MyApp
     ],
     providers: [
         Device,
+        GetApiValidatorService,
         GoogleAnalytics,
         Clipboard,
+        SettingEmailService,
         StatusBar,
         SplashScreen,
         SocialSharing,
@@ -86,8 +79,8 @@ const config: SocketIoConfig = {
         ImagePicker,
         Contacts,
         EmailComposer,
-        FirebaseAnalytics,
         AppVersion,
+        zendeskService
     ]
 })
 export class AppModule { }

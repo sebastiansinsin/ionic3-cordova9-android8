@@ -1,6 +1,6 @@
 import { FormGroup } from "@angular/forms";
 import { File } from "@ionic-native/file";
-import { FirebaseAnalytics } from "@ionic-native/firebase-analytics";
+import { FirebaseAnalyticsOriginal } from "@ionic-native/firebase-analytics";
 import { ImagePicker, ImagePickerOptions } from "@ionic-native/image-picker";
 import { UUID } from "angular2-uuid";
 import dirnameRegex from "dirname-regex";
@@ -109,7 +109,7 @@ export let getDataAnalytics = (name: string, objData?: any, screen?: boolean, re
     return dataPush;
 }
 
-export const setScreenAnalytics = (screen: string, firebase?: FirebaseAnalytics) => {
+export const setScreenAnalytics = (screen: string, firebase?: FirebaseAnalyticsOriginal) => {
     if (isProduction) {
         if (firebase) {
             let data = getDataAnalytics(screen, null, true);
@@ -123,7 +123,7 @@ export const setScreenAnalytics = (screen: string, firebase?: FirebaseAnalytics)
 
 export const setEventAnalytics = (
     name: string,
-    firebase: FirebaseAnalytics,
+    firebase: FirebaseAnalyticsOriginal,
     data: any = null
 ) => {
     if (isProduction) {
